@@ -3,8 +3,7 @@ import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
 import {
     LayoutDashboard, ClipboardList, Calendar, BookOpen,
     CreditCard, LogOut, GraduationCap, Menu, X,
-    Users, BarChart3, Settings, Bell,
-    FileText, FileBadge, ListChecks
+    Users, BarChart3, Settings, Bell
 } from 'lucide-react'
 
 const studentLinks = [
@@ -13,9 +12,6 @@ const studentLinks = [
     { label: 'Timetable', icon: Calendar, path: '/portal/student#timetable' },
     { label: 'Results', icon: BookOpen, path: '/portal/student#results' },
     { label: 'Fee Status', icon: CreditCard, path: '/portal/student#fee' },
-    { label: 'Leave Request', icon: FileText, path: '/portal/student/leave-request' },
-    { label: 'OD Request', icon: FileBadge, path: '/portal/student/od-request' },
-    { label: 'My Requests', icon: ListChecks, path: '/portal/student/my-requests' },
 ]
 
 const facultyLinks = [
@@ -85,18 +81,13 @@ export default function PortalLayout() {
 
                 {/* Nav Links */}
                 <nav className="px-4 py-2 space-y-1">
-                    {links.map(({ label, icon: Icon, path }) => {
-                        const isActive = path.includes('#')
-                            ? location.pathname + location.hash === path
-                            : location.pathname === path || location.pathname.startsWith(path + '/')
-                        return (
-                            <Link key={label} to={path}
-                                className={`sidebar-item ${isActive ? 'active' : ''}`}>
-                                <Icon className="w-5 h-5" />
-                                <span className="text-sm font-medium">{label}</span>
-                            </Link>
-                        )
-                    })}
+                    {links.map(({ label, icon: Icon, path }) => (
+                        <Link key={label} to={path}
+                            className={`sidebar-item ${location.pathname === path ? 'active' : ''}`}>
+                            <Icon className="w-5 h-5" />
+                            <span className="text-sm font-medium">{label}</span>
+                        </Link>
+                    ))}
                 </nav>
 
                 {/* Bottom actions */}

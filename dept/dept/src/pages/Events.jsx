@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Calendar, Users, MapPin, X } from 'lucide-react'
 
@@ -22,15 +22,6 @@ const typeColors = {
 export default function Events() {
     const [filter, setFilter] = useState('All')
     const [selected, setSelected] = useState(null)
-
-    useEffect(() => {
-        if (selected) {
-            document.body.style.overflow = 'hidden';
-        }
-        return () => {
-            document.body.style.overflow = '';
-        };
-    }, [selected]);
 
     const types = ['All', 'Workshop', 'Symposium', 'Seminar', 'Hackathon', 'Alumni']
     const filtered = filter === 'All' ? events : events.filter(e => e.type === filter)

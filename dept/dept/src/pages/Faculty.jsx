@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Mail, BookOpen, Award } from 'lucide-react'
 import { faculty } from '../data/data'
@@ -6,13 +6,6 @@ import { faculty } from '../data/data'
 const categories = ['All', 'Professor', 'Associate Professor', 'Assistant Professor']
 
 function FacultyModal({ member, onClose }) {
-    useEffect(() => {
-        document.body.style.overflow = 'hidden';
-        return () => {
-            document.body.style.overflow = '';
-        };
-    }, []);
-
     return (
         <AnimatePresence>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}

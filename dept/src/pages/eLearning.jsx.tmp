@@ -1,9 +1,9 @@
-import React, { useState, useMemo, useEffect } from 'react'
+import React, { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
     Play, BookOpen, Download, Code2, Terminal,
     FileText, Lightbulb, CheckCircle2, Variable,
-    HelpCircle, ChevronDown, Video, X
+    HelpCircle, ChevronDown, Video
 } from 'lucide-react'
 
 // ─────────────────────────────────────────────────────────────
@@ -12,11 +12,10 @@ import {
 
 const years = ['1st Year', '2nd Year', '3rd Year', '4th Year']
 const semesterTypes = ['Odd Semester', 'Even Semester']
-const regulations = ['Regulation 2020', 'Regulation 2024']
 
 const subjectData = [
     {
-        regulation: 'Regulation 2020', id: 'tech-english-1',
+        regulation: '2020', id: 'tech-english-1',
         name: '20EN151 Technical English – I',
         year: '1st Year',
         semester: 'Odd Semester',
@@ -37,7 +36,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'eng-math-1',
+        regulation: '2020', id: 'eng-math-1',
         name: '20MA151 Engineering Mathematics – I',
         year: '1st Year',
         semester: 'Odd Semester',
@@ -59,7 +58,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'eng-chem',
+        regulation: '2020', id: 'eng-chem',
         name: '20CH051 Engineering Chemistry',
         year: '1st Year',
         semester: 'Odd Semester',
@@ -80,7 +79,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'beee',
+        regulation: '2020', id: 'beee',
         name: '20EE041 Basics of Electrical and Electronics Engineering',
         year: '1st Year',
         semester: 'Odd Semester',
@@ -102,16 +101,16 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'pst',
+        regulation: '2020', id: 'pst',
         name: '20CS142 Problem Solving Techniques',
         year: '1st Year',
         semester: 'Odd Semester',
         type: 'programming',
         content: {
             videos: [
-                { title: 'Introduction to Algorithms', duration: '12:40', regulation: 'Regulation 2020', id: 'pst-v1' },
-                { title: 'Flowcharts and Pseudocodes', duration: '18:15', regulation: 'Regulation 2020', id: 'pst-v2' },
-                { title: 'Control Structures (If/Else, Loops)', duration: '25:50', regulation: 'Regulation 2020', id: 'pst-v3' }
+                { title: 'Introduction to Algorithms', duration: '12:40', regulation: '2020', id: 'pst-v1' },
+                { title: 'Flowcharts and Pseudocodes', duration: '18:15', regulation: '2020', id: 'pst-v2' },
+                { title: 'Control Structures (If/Else, Loops)', duration: '25:50', regulation: '2020', id: 'pst-v3' }
             ],
             examplePrograms: [
                 { title: 'Fibonacci Series', language: 'Pseudocode/C' },
@@ -121,7 +120,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'heritage-tamils',
+        regulation: '2020', id: 'heritage-tamils',
         name: '20GE051 தமிழ் மரபு/Heritage of Tamils',
         year: '1st Year',
         semester: 'Odd Semester',
@@ -143,7 +142,7 @@ const subjectData = [
     },
     // 1st Year - Even Semester
     {
-        regulation: 'Regulation 2020', id: 'tech-english-2',
+        regulation: '2020', id: 'tech-english-2',
         name: '20EN251 Technical English – II',
         year: '1st Year',
         semester: 'Even Semester',
@@ -164,7 +163,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'discrete-math',
+        regulation: '2020', id: 'discrete-math',
         name: '20MA232 Discrete Mathematics',
         year: '1st Year',
         semester: 'Even Semester',
@@ -186,7 +185,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'eng-physics',
+        regulation: '2020', id: 'eng-physics',
         name: '20PH051 Engineering Physics',
         year: '1st Year',
         semester: 'Even Semester',
@@ -208,7 +207,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'digital-principles',
+        regulation: '2020', id: 'digital-principles',
         name: '20EE231 Digital principles and Computer Design',
         year: '1st Year',
         semester: 'Even Semester',
@@ -230,16 +229,16 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'c-prog',
+        regulation: '2020', id: 'c-prog',
         name: '20CS211 C Programming',
         year: '1st Year',
         semester: 'Even Semester',
         type: 'programming',
         content: {
             videos: [
-                { title: 'Introduction to C Syntax', duration: '14:30', regulation: 'Regulation 2020', id: 'c-v1' },
-                { title: 'Pointers and Memory', duration: '28:10', regulation: 'Regulation 2020', id: 'c-v2' },
-                { title: 'File Handling in C', duration: '20:45', regulation: 'Regulation 2020', id: 'c-v3' }
+                { title: 'Introduction to C Syntax', duration: '14:30', regulation: '2020', id: 'c-v1' },
+                { title: 'Pointers and Memory', duration: '28:10', regulation: '2020', id: 'c-v2' },
+                { title: 'File Handling in C', duration: '20:45', regulation: '2020', id: 'c-v3' }
             ],
             examplePrograms: [
                 { title: 'Dynamic Array Allocation', language: 'C' },
@@ -249,7 +248,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'env-science',
+        regulation: '2020', id: 'env-science',
         name: '20MC052 Environmental Science and Engineering',
         year: '1st Year',
         semester: 'Even Semester',
@@ -270,7 +269,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'tamils-tech',
+        regulation: '2020', id: 'tamils-tech',
         name: '20GE052 தமிழரும் ததொழில்நுட்பமும்/Tamils and Technology',
         year: '1st Year',
         semester: 'Even Semester',
@@ -292,7 +291,7 @@ const subjectData = [
     },
     // 2nd Year - Odd Semester
     {
-        regulation: 'Regulation 2020', id: 'num-comp-tech',
+        regulation: '2020', id: 'num-comp-tech',
         name: '20MA343 Numerical Computational Techniques',
         year: '2nd Year',
         semester: 'Odd Semester',
@@ -314,16 +313,16 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'python-prog',
+        regulation: '2020', id: 'python-prog',
         name: '20CS311 Python Programming',
         year: '2nd Year',
         semester: 'Odd Semester',
         type: 'programming',
         content: {
             videos: [
-                { title: 'Python Basics & Data Structures', duration: '16:20', regulation: 'Regulation 2020', id: 'py-v1' },
-                { title: 'File Handling & Exception Handling', duration: '22:10', regulation: 'Regulation 2020', id: 'py-v2' },
-                { title: 'OOP in Python: Classes & Inheritance', duration: '28:45', regulation: 'Regulation 2020', id: 'py-v3' }
+                { title: 'Python Basics & Data Structures', duration: '16:20', regulation: '2020', id: 'py-v1' },
+                { title: 'File Handling & Exception Handling', duration: '22:10', regulation: '2020', id: 'py-v2' },
+                { title: 'OOP in Python: Classes & Inheritance', duration: '28:45', regulation: '2020', id: 'py-v3' }
             ],
             examplePrograms: [
                 { title: 'Dictionary List Manipulation', language: 'Python' },
@@ -333,16 +332,16 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'ds-2',
+        regulation: '2020', id: 'ds-2',
         name: '20CS312 Data Structures',
         year: '2nd Year',
         semester: 'Odd Semester',
         type: 'programming',
         content: {
             videos: [
-                { title: 'Linked List Operations', duration: '18:30', regulation: 'Regulation 2020', id: 'ds2-v1' },
-                { title: 'Stack and Queue Applications', duration: '20:15', regulation: 'Regulation 2020', id: 'ds2-v2' },
-                { title: 'Hashing & Collision Resolution', duration: '25:50', regulation: 'Regulation 2020', id: 'ds2-v3' }
+                { title: 'Linked List Operations', duration: '18:30', regulation: '2020', id: 'ds2-v1' },
+                { title: 'Stack and Queue Applications', duration: '20:15', regulation: '2020', id: 'ds2-v2' },
+                { title: 'Hashing & Collision Resolution', duration: '25:50', regulation: '2020', id: 'ds2-v3' }
             ],
             examplePrograms: [
                 { title: 'Circular Linked List', language: 'C/C++' },
@@ -352,7 +351,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'os',
+        regulation: '2020', id: 'os',
         name: '20CS313 Operating Systems',
         year: '2nd Year',
         semester: 'Odd Semester',
@@ -373,7 +372,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'coa',
+        regulation: '2020', id: 'coa',
         name: '20CS314 Computer Organization and Architecture',
         year: '2nd Year',
         semester: 'Odd Semester',
@@ -394,7 +393,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'se',
+        regulation: '2020', id: 'se',
         name: '20CS315 Software Engineering',
         year: '2nd Year',
         semester: 'Odd Semester',
@@ -416,7 +415,7 @@ const subjectData = [
     },
     // 2nd Year - Even Semester
     {
-        regulation: 'Regulation 2020', id: 'prob-decision',
+        regulation: '2020', id: 'prob-decision',
         name: '20MA441 Probability and Decision Models',
         year: '2nd Year',
         semester: 'Even Semester',
@@ -438,7 +437,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'toc',
+        regulation: '2020', id: 'toc',
         name: '20CS411 Theory of Computation',
         year: '2nd Year',
         semester: 'Even Semester',
@@ -460,16 +459,16 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'java-2',
+        regulation: '2020', id: 'java-2',
         name: '20CS412 Java programming',
         year: '2nd Year',
         semester: 'Even Semester',
         type: 'programming',
         content: {
             videos: [
-                { title: 'Generics & Collections Framework', duration: '20:15', regulation: 'Regulation 2020', id: 'java2-v1' },
-                { title: 'Multi-threading & Synchronization', duration: '25:40', regulation: 'Regulation 2020', id: 'java2-v2' },
-                { title: 'JDBC & Database Connectivity', duration: '18:50', regulation: 'Regulation 2020', id: 'java2-v3' }
+                { title: 'Generics & Collections Framework', duration: '20:15', regulation: '2020', id: 'java2-v1' },
+                { title: 'Multi-threading & Synchronization', duration: '25:40', regulation: '2020', id: 'java2-v2' },
+                { title: 'JDBC & Database Connectivity', duration: '18:50', regulation: '2020', id: 'java2-v3' }
             ],
             examplePrograms: [
                 { title: 'Custom Thread Implementation', language: 'Java' },
@@ -479,16 +478,16 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'dbms',
+        regulation: '2020', id: 'dbms',
         name: '20CS413 Database Management Systems',
         year: '2nd Year',
         semester: 'Even Semester',
         type: 'programming',
         content: {
             videos: [
-                { title: 'SQL Queries: Joins & Subqueries', duration: '15:30', regulation: 'Regulation 2020', id: 'dbms-v1' },
-                { title: 'Normalization: 1NF to BCNF', duration: '22:45', regulation: 'Regulation 2020', id: 'dbms-v2' },
-                { title: 'Transaction Management & ACID', duration: '19:10', regulation: 'Regulation 2020', id: 'dbms-v3' }
+                { title: 'SQL Queries: Joins & Subqueries', duration: '15:30', regulation: '2020', id: 'dbms-v1' },
+                { title: 'Normalization: 1NF to BCNF', duration: '22:45', regulation: '2020', id: 'dbms-v2' },
+                { title: 'Transaction Management & ACID', duration: '19:10', regulation: '2020', id: 'dbms-v3' }
             ],
             examplePrograms: [
                 { title: 'Library Schema (DDL/DML)', language: 'SQL' },
@@ -498,16 +497,16 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'daa',
+        regulation: '2020', id: 'daa',
         name: '20CS414 Design and Analysis of Algorithms',
         year: '2nd Year',
         semester: 'Even Semester',
         type: 'programming',
         content: {
             videos: [
-                { title: 'Greedy vs Dynamic Programming', duration: '24:10', regulation: 'Regulation 2020', id: 'daa-v1' },
-                { title: 'Divide and Conquer: Merge Sort', duration: '18:55', regulation: 'Regulation 2020', id: 'daa-v2' },
-                { title: 'Backtracking: N-Queens Problem', duration: '21:30', regulation: 'Regulation 2020', id: 'daa-v3' }
+                { title: 'Greedy vs Dynamic Programming', duration: '24:10', regulation: '2020', id: 'daa-v1' },
+                { title: 'Divide and Conquer: Merge Sort', duration: '18:55', regulation: '2020', id: 'daa-v2' },
+                { title: 'Backtracking: N-Queens Problem', duration: '21:30', regulation: '2020', id: 'daa-v3' }
             ],
             examplePrograms: [
                 { title: 'Knapsack Problem (DP)', language: 'C++/Python' },
@@ -517,7 +516,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'micro',
+        regulation: '2020', id: 'micro',
         name: '20EE431 Microprocessors and Microcontrollers',
         year: '2nd Year',
         semester: 'Even Semester',
@@ -540,7 +539,7 @@ const subjectData = [
     },
     // 3rd Year - Odd Semester
     {
-        regulation: 'Regulation 2020', id: 'compiler-design',
+        regulation: '2020', id: 'compiler-design',
         name: '20CS511 Principles of Compiler Design',
         year: '3rd Year',
         semester: 'Odd Semester',
@@ -562,16 +561,16 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'web-prog',
+        regulation: '2020', id: 'web-prog',
         name: '20CS512 Web Programming',
         year: '3rd Year',
         semester: 'Odd Semester',
         type: 'programming',
         content: {
             videos: [
-                { title: 'Full Stack Development Overview', duration: '18:45', regulation: 'Regulation 2020', id: 'web-v1' },
-                { title: 'React Hooks & State Management', duration: '22:15', regulation: 'Regulation 2020', id: 'web-v2' },
-                { title: 'Node.js Express API Design', duration: '28:30', regulation: 'Regulation 2020', id: 'web-v3' }
+                { title: 'Full Stack Development Overview', duration: '18:45', regulation: '2020', id: 'web-v1' },
+                { title: 'React Hooks & State Management', duration: '22:15', regulation: '2020', id: 'web-v2' },
+                { title: 'Node.js Express API Design', duration: '28:30', regulation: '2020', id: 'web-v3' }
             ],
             examplePrograms: [
                 { title: 'Responsive Portfolio Template', language: 'HTML/CSS/JS' },
@@ -581,7 +580,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'ooad',
+        regulation: '2020', id: 'ooad',
         name: '20CS513 Object Oriented Analysis and Design',
         year: '3rd Year',
         semester: 'Odd Semester',
@@ -602,7 +601,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'cn-2',
+        regulation: '2020', id: 'cn-2',
         name: '20CS514 Computer Networks',
         year: '3rd Year',
         semester: 'Odd Semester',
@@ -623,7 +622,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'entrepreneurship',
+        regulation: '2020', id: 'entrepreneurship',
         name: '20CS515 Entrepreneurship Development',
         year: '3rd Year',
         semester: 'Odd Semester',
@@ -644,7 +643,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'open-source',
+        regulation: '2020', id: 'open-source',
         name: '20CS564 Open Source Technologies',
         year: '3rd Year',
         semester: 'Odd Semester',
@@ -652,9 +651,9 @@ const subjectData = [
         category: 'Professional Elective – I',
         content: {
             videos: [
-                { title: 'History of Open Source', duration: '12:20', regulation: 'Regulation 2020', id: 'os-v1' },
-                { title: 'Git & GitHub Collaboration', duration: '20:15', regulation: 'Regulation 2020', id: 'os-v2' },
-                { title: 'Contributing to Large Projects', duration: '25:40', regulation: 'Regulation 2020', id: 'os-v3' }
+                { title: 'History of Open Source', duration: '12:20', regulation: '2020', id: 'os-v1' },
+                { title: 'Git & GitHub Collaboration', duration: '20:15', regulation: '2020', id: 'os-v2' },
+                { title: 'Contributing to Large Projects', duration: '25:40', regulation: '2020', id: 'os-v3' }
             ],
             examplePrograms: [
                 { title: 'Git Workflow Exercise', language: 'Bash' },
@@ -664,7 +663,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'ai-expert',
+        regulation: '2020', id: 'ai-expert',
         name: '20CS566 Artificial Intelligence and Expert Systems',
         year: '3rd Year',
         semester: 'Odd Semester',
@@ -688,7 +687,7 @@ const subjectData = [
     },
     // 3rd Year - Even Semester
     {
-        regulation: 'Regulation 2020', id: 'human-values',
+        regulation: '2020', id: 'human-values',
         name: '20HS051 Universal Human values and Understanding Harmony',
         year: '3rd Year',
         semester: 'Even Semester',
@@ -709,16 +708,16 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'csharp-net',
+        regulation: '2020', id: 'csharp-net',
         name: '20CS601 C# and .Net Framework',
         year: '3rd Year',
         semester: 'Even Semester',
         type: 'programming',
         content: {
             videos: [
-                { title: 'Intro to .NET Core Architecture', duration: '15:20', regulation: 'Regulation 2020', id: 'net-v1' },
-                { title: 'C# Linq & Entity Framework', duration: '24:10', regulation: 'Regulation 2020', id: 'net-v2' },
-                { title: 'ASP.NET Core Web API', duration: '28:45', regulation: 'Regulation 2020', id: 'net-v3' }
+                { title: 'Intro to .NET Core Architecture', duration: '15:20', regulation: '2020', id: 'net-v1' },
+                { title: 'C# Linq & Entity Framework', duration: '24:10', regulation: '2020', id: 'net-v2' },
+                { title: 'ASP.NET Core Web API', duration: '28:45', regulation: '2020', id: 'net-v3' }
             ],
             examplePrograms: [
                 { title: 'Generic List with Delegates', language: 'C#' },
@@ -728,7 +727,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'crypto-ns',
+        regulation: '2020', id: 'crypto-ns',
         name: '20CS611 Cryptography and Network Security',
         year: '3rd Year',
         semester: 'Even Semester',
@@ -750,7 +749,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'soft-testing',
+        regulation: '2020', id: 'soft-testing',
         name: '20CS612 Software Testing',
         year: '3rd Year',
         semester: 'Even Semester',
@@ -772,7 +771,7 @@ const subjectData = [
     },
     // Professional Elective – II
     {
-        regulation: 'Regulation 2020', id: 'green-computing',
+        regulation: '2020', id: 'green-computing',
         name: '20CS661 Green Computing',
         year: '3rd Year',
         semester: 'Even Semester',
@@ -794,7 +793,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'high-speed-net',
+        regulation: '2020', id: 'high-speed-net',
         name: '20CS666 High Speed Networks',
         year: '3rd Year',
         semester: 'Even Semester',
@@ -817,7 +816,7 @@ const subjectData = [
     },
     // Professional Elective – III (User said II again, but listed as separate entry)
     {
-        regulation: 'Regulation 2020', id: 'iot',
+        regulation: '2020', id: 'iot',
         name: '20CS663 Internet of Things',
         year: '3rd Year',
         semester: 'Even Semester',
@@ -825,9 +824,9 @@ const subjectData = [
         category: 'Professional Elective – III',
         content: {
             videos: [
-                { title: 'IoT Architecture & Protocols', duration: '18:10', regulation: 'Regulation 2020', id: 'iot-v1' },
-                { title: 'Interfacing Sensors with Arduino', duration: '22:30', regulation: 'Regulation 2020', id: 'iot-v2' },
-                { title: 'Cloud Integration for IoT Data', duration: '25:15', regulation: 'Regulation 2020', id: 'iot-v3' }
+                { title: 'IoT Architecture & Protocols', duration: '18:10', regulation: '2020', id: 'iot-v1' },
+                { title: 'Interfacing Sensors with Arduino', duration: '22:30', regulation: '2020', id: 'iot-v2' },
+                { title: 'Cloud Integration for IoT Data', duration: '25:15', regulation: '2020', id: 'iot-v3' }
             ],
             examplePrograms: [
                 { title: 'MQTT Client using Python', language: 'Python' },
@@ -837,7 +836,7 @@ const subjectData = [
         }
     },
     {
-        regulation: 'Regulation 2020', id: 'android-app',
+        regulation: '2020', id: 'android-app',
         name: '20CS664 Android Application',
         year: '3rd Year',
         semester: 'Even Semester',
@@ -845,9 +844,9 @@ const subjectData = [
         category: 'Professional Elective – III',
         content: {
             videos: [
-                { title: 'Android Studio Setup & UI', duration: '20:00', regulation: 'Regulation 2020', id: 'app-v1' },
-                { title: 'Activities & Fragments Lifecycle', duration: '24:50', regulation: 'Regulation 2020', id: 'app-v2' },
-                { title: 'SQL-Lite & Room Database', duration: '30:10', regulation: 'Regulation 2020', id: 'app-v3' }
+                { title: 'Android Studio Setup & UI', duration: '20:00', regulation: '2020', id: 'app-v1' },
+                { title: 'Activities & Fragments Lifecycle', duration: '24:50', regulation: '2020', id: 'app-v2' },
+                { title: 'SQL-Lite & Room Database', duration: '30:10', regulation: '2020', id: 'app-v3' }
             ],
             examplePrograms: [
                 { title: 'Custom Listview with Adapter', language: 'Kotlin/Java' },
@@ -857,193 +856,6 @@ const subjectData = [
         }
     }
 ]
-
-// Generic Fallback Questions Database
-const genericTestQuestionsDB = {
-    'Lab Exercises': [
-        "1. Write a program to implement a basic calculator.",
-        "2. Implement a sorting algorithm of your choice and analyze its performance.",
-        "3. Create a basic CRUD application using array data structures.",
-        "4. Write a script to fetch data from a public API and display it."
-    ],
-    'Assignment Set': [
-        "1. Explain the differences between deep copy and shallow copy with examples.",
-        "2. Describe the software development lifecycle and its various phases.",
-        "3. Compare different database normalization forms.",
-        "4. Write an essay on the impact of Artificial Intelligence in modern engineering."
-    ],
-    'Quiz 1': [
-        "1. What is the time complexity of Binary Search? (a) O(1) (b) O(n) (c) O(log n) (d) O(n^2)",
-        "2. Which protocol is used for secure communication over the internet? (a) HTTP (b) FTP (c) HTTPS (d) SMTP",
-        "3. In Object-Oriented Programming, polymorphism means: (a) Data hiding (b) Many forms (c) Code reuse (d) Single instance",
-        "4. What does SQL stand for? (a) Simple Query Language (b) Structured Query Language (c) Sequential Query Language (d) Standard Query Language"
-    ],
-    'Mock Test': [
-        "Part A: Answer all questions (10 x 2 = 20 Marks)",
-        "1. Define polymorphism.",
-        "2. What is an interrupt?",
-        "Part B: Answer any two (2 x 15 = 30 Marks)",
-        "11. Design a normalized database schema for a university management system.",
-        "12. Explain the TCP/IP reference model with a neat diagram."
-    ]
-};
-
-// Subject Specific Questions Database
-const subjectTestQuestionsDB = {
-    'c-prog': {
-        'Lab Exercises': [
-            "1. Write a C program to find the factorial of a number using recursion.",
-            "2. Write a C program to dynamically allocate memory for an array and compute its sum.",
-            "3. Implement a linked list in C and perform insertion and deletion operations."
-        ],
-        'Assignment Set': [
-            "1. Explain the difference between malloc() and calloc() in C.",
-            "2. Describe how pointers work and list the advantages of using them.",
-            "3. What are storage classes in C? Explain with examples."
-        ],
-        'Quiz 1': [
-            "1. What is the default return type of a function in C? (a) int (b) void (c) char (d) float",
-            "2. Which operator is used to get the address of a variable? (a) * (b) & (c) % (d) #",
-            "3. What is the size of an int pointer in a 32-bit system? (a) 2 bytes (b) 4 bytes (c) 8 bytes (d) Compiler dependent"
-        ],
-        'Mock Test': [
-            "Part A: Answer all questions (10 x 2 = 20 Marks)",
-            "1. What is a dangling pointer?",
-            "2. Define a macro in C.",
-            "Part B: Answer any two (2 x 15 = 30 Marks)",
-            "11. Write a program to sort an array using Quick Sort in C.",
-            "12. Explain File Handling operations in C with syntax and examples."
-        ]
-    },
-    'python-prog': {
-        'Lab Exercises': [
-            "1. Write a Python script to scrape data from a website using BeautifulSoup.",
-            "2. Create a Python application that reads a CSV file and plots a bar chart using Matplotlib.",
-            "3. Implement a class representing a Bank Account with deposit and withdraw methods."
-        ],
-        'Assignment Set': [
-            "1. Explain the Global Interpreter Lock (GIL) in Python.",
-            "2. Compare lists, tuples, sets, and dictionaries in Python.",
-            "3. Discuss Exception Handling mechanisms with a try-except-finally block example."
-        ],
-        'Quiz 1': [
-            "1. What is the output of `print(type({}))`? (a) set (b) tuple (c) dict (d) list",
-            "2. Which of the following is NOT a core data type in Python? (a) List (b) Dictionary (c) Class (d) Tuple",
-            "3. How do you create an empty set? (a) set[] (b) {} (c) set() (d) dict()"
-        ],
-        'Mock Test': [
-            "Part A: Answer all questions (10 x 2 = 20 Marks)",
-            "1. What are python decorators?",
-            "2. What is list comprehension?",
-            "Part B: Answer any two (2 x 15 = 30 Marks)",
-            "11. Explain Multiple Inheritance in Python. Provide a code sample.",
-            "12. Write a complete Python program to simulate a simple ATM machine."
-        ]
-    },
-    'java-2': {
-         'Lab Exercises': [
-            "1. Create a Java application demonstrating multithreading using the Runnable interface.",
-            "2. Write a program to connect to a MySQL database using JDBC and execute a SELECT query.",
-            "3. Implement a generic class `Box<T>` that can store any type of object."
-        ],
-         'Assignment Set': [
-            "1. Explain the differences between abstract classes and interfaces in Java 8+.",
-            "2. Describe the Java Memory Model and the purpose of Garbage Collection.",
-            "3. Discuss the Collections Framework hierarchy."
-        ],
-        'Quiz 1': [
-            "1. Which keyword prevents a class from being subclassed? (a) final (b) static (c) abstract (d) private",
-            "2. What is the parent class of all exceptions? (a) Exception (b) Throwable (c) RuntimeException (d) Error",
-            "3. Autoboxing is the automatic conversion that the Java compiler makes between... (a) primitive types to wrapper classes (b) objects to primitives (c) int to float (d) none of the above"
-        ],
-        'Mock Test': [
-            "Part A: Answer all questions (10 x 2 = 20 Marks)",
-            "1. What is the difference between StringBuffer and StringBuilder?",
-            "2. Define the `volatile` keyword.",
-            "Part B: Answer any two (2 x 15 = 30 Marks)",
-            "11. Explain Exception Handling in Java. Differentiate checked and unchecked exceptions.",
-            "12. Design a thread-safe Singleton class in Java."
-        ]
-    },
-    'dbms': {
-        'Lab Exercises': [
-            "1. Write SQL queries to perform Inner, Left, and Right Joins on explicit generic tables.",
-            "2. Create a stored procedure to calculate the average salary of employees in a given department.",
-            "3. Implement an After Insert trigger to maintain an audit log table."
-        ],
-        'Assignment Set': [
-            "1. Explain the ACID properties of a transaction in detail.",
-            "2. Describe the steps and anomalies involved in normalizing a database up to BCNF.",
-            "3. What are the advantages of NoSQL databases compared to traditional SQL databases?"
-        ]
-    },
-    'web-prog': {
-         'Lab Exercises': [
-            "1. Build a responsive navigation bar using HTML and CSS Flexbox.",
-            "2. Create a React component that fetches and maps data from the JSONPlaceholder API.",
-            "3. Setup an Express server with a basic GET and POST endpoint."
-        ],
-        'Assignment Set': [
-            "1. Explain the Virtual DOM in React and why it improves performance.",
-            "2. Describe the differences between LocalStorage, SessionStorage, and Cookies.",
-            "3. Discuss the anatomy of an HTTP Request/Response cycle."
-        ]
-    },
-    'pst': {
-        'Lab Exercises': [
-            "1. Write a pseudocode to find the largest of three numbers.",
-            "2. Draw a flowchart to check whether a given year is a leap year.",
-            "3. Write a C program to print the Fibonacci series up to N terms."
-        ],
-        'Assignment Set': [
-            "1. Differentiate between algorithms, pseudocodes, and flowcharts.",
-            "2. Explain the various control structures with suitable examples.",
-            "3. Discuss the characteristics of a good algorithm."
-        ],
-        'Quiz 1': [
-            "1. Which symbol is used for a decision block in a flowchart? (a) Rectangle (b) Oval (c) Diamond (d) Parallelogram",
-            "2. What is the process of finding and fixing errors in a program called? (a) Compiling (b) Executing (c) Debugging (d) Interpreting",
-            "3. A step-by-step procedure used to solve a problem is called? (a) Operating System (b) Algorithm (c) Application (d) Syntax"
-        ],
-        'Mock Test': [
-             "Part A: Answer all questions (10 x 2 = 20 Marks)",
-             "1. Define an algorithm.",
-             "2. What is the purpose of an input/output symbol in a flowchart?",
-             "Part B: Answer any two (2 x 15 = 30 Marks)",
-             "11. Design a flowchart and write an algorithm to find the roots of a quadratic equation.",
-             "12. Explain modular programming approach in detail."
-        ]
-    },
-    'ds-2': {
-        'Lab Exercises': [
-            "1. Implement a Stack using an array in C++.",
-            "2. Write a program to evaluate a postfix expression.",
-            "3. Implement a Binary Search Tree and perform Inorder traversal."
-        ],
-        'Assignment Set': [
-            "1. Compare Array vs Linked List data structures.",
-            "2. Explain the operations on a Circular Queue.",
-            "3. Discuss different mechanisms for resolving Hash Collisions."
-        ],
-        'Quiz 1': [
-             "1. Which data structure operates on LIFO principle? (a) Queue (b) Stack (c) Tree (d) Graph",
-             "2. What is the worst-case time complexity of inserting into a balanced BST? (a) O(1) (b) O(log n) (c) O(n) (d) O(n log n)",
-             "3. Which traversal algorithm is used to find shortest paths in unweighted graphs? (a) DFS (b) BFS (c) Preorder (d) Postorder"
-        ]
-    },
-    'daa': {
-        'Lab Exercises': [
-            "1. Implement fractional knapsack problem using a greedy approach.",
-            "2. Write a program to find the shortest path using Dijkstra's algorithm.",
-            "3. Implement N-Queens problem using backtracking."
-        ],
-        'Assignment Set': [
-            "1. Define the asymptotic notations (Big O, Omega, Theta).",
-            "2. Compare and contrast greedy approach vs dynamic programming.",
-            "3. Explain the master theorem for solving recurrences with an example."
-        ]
-    }
-};
 
 // ─────────────────────────────────────────────────────────────
 // MODULAR COMPONENTS
@@ -1082,230 +894,59 @@ const SectionHeader = ({ icon: Icon, title, color }) => (
     </div>
 )
 
-const VideoModal = ({ video, onClose }) => {
-    useEffect(() => {
-        document.body.style.overflow = 'hidden';
-        return () => {
-            document.body.style.overflow = '';
-        };
-    }, []);
-
-    if (!video) return null;
-
-    // We assume the video file matches the video ID in the public directory, e.g., `/videos/pst-v1.mp4`.
-    // We add a fallback mechanism using onError on the video tag below if it fails, normally we can't easily detect React <video> error without a handler.
-    // For now we assume typical path `/videos/${video.id}.mp4`
-    
-    return (
-        <AnimatePresence>
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
-                onClick={onClose}
-            >
-                <div 
-                    className="relative w-full max-w-4xl bg-[#0f172a] rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
-                    onClick={(e) => e.stopPropagation()} // Prevent closing when clicking within the modal
-                >
-                    {/* Header */}
-                    <div className="flex items-center justify-between p-4 border-b border-white/10 bg-white/5">
-                        <div>
-                            <h3 className="text-white font-semibold text-lg">{video.title}</h3>
-                            <p className="text-slate-400 text-sm">{video.regulation} • {video.duration}</p>
-                        </div>
-                        <button
-                            onClick={onClose}
-                            className="p-2 rounded-xl bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
-                        >
-                            <X size={20} />
-                        </button>
-                    </div>
-                    
-                    {/* Video Player */}
-                    <div className="aspect-video bg-black w-full relative">
-                        {/* We use the public path `/videos/ID.mp4`. If user hasn't provided the video files yet, the player will be black but the native controls will appear. */}
-                        <video
-                            className="w-full h-full"
-                            controls
-                            autoPlay
-                            controlsList="nodownload"
-                            src={`/videos/${video.id}.mp4`}
-                        >
-                            <source src={`/videos/${video.id}.mp4`} type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </div>
-            </motion.div>
-        </AnimatePresence>
-    );
-};
-
-const TestModal = ({ type, subject, onClose }) => {
-    useEffect(() => {
-        document.body.style.overflow = 'hidden';
-        return () => {
-            document.body.style.overflow = '';
-        };
-    }, []);
-
-    if (!type || !subject) return null;
-
-    // First try to find subject-specific questions, otherwise use generic
-    const specificDB = subjectTestQuestionsDB[subject.id];
-    let questions = [];
-
-    if (specificDB && specificDB[type]) {
-         questions = specificDB[type];
-    } else {
-         questions = genericTestQuestionsDB[type] || ["No questions available for this module yet."];
-    }
-
-    return (
-        <AnimatePresence>
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
-                onClick={onClose}
-            >
-                <div 
-                    className="relative w-full max-w-2xl bg-[#0f172a] rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
-                    onClick={(e) => e.stopPropagation()}
-                >
-                    {/* Header */}
-                    <div className="flex items-center justify-between p-5 border-b border-white/10 bg-gradient-to-r from-accent-teal/20 to-transparent">
+const ProgrammingContent = ({ content }) => (
+    <div className="grid lg:grid-cols-2 gap-8">
+        {/* Videos */}
+        <div className="glass-card p-6">
+            <SectionHeader icon={Video} title="Video Lectures" color="accent-blue" />
+            <div className="space-y-3">
+                {content.videos.map((video) => (
+                    <div key={video.id} className="group flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-all cursor-pointer">
                         <div className="flex items-center gap-3">
-                            <div className="p-2 bg-accent-teal/20 rounded-lg">
-                                <Code2 size={24} className="text-accent-teal" />
+                            <div className="w-10 h-10 rounded-full bg-accent-blue/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <Play size={16} className="text-accent-blue ml-1" />
                             </div>
                             <div>
-                                <h3 className="text-white font-bold text-xl">{type}</h3>
-                                <p className="text-slate-400 text-sm">{subject.name}</p>
+                                <p className="text-white text-sm font-medium">{video.title}</p>
+                                <p className="text-slate-500 text-xs">{video.duration}</p>
                             </div>
                         </div>
-                        <button
-                            onClick={onClose}
-                            className="p-2 rounded-xl bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
-                        >
-                            <X size={20} />
+                        <div className="text-accent-blue p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <Video size={16} />
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+
+        {/* Practice & Notes */}
+        <div className="space-y-6">
+            <div className="glass-card p-6">
+                <SectionHeader icon={Code2} title="Coding Practice" color="accent-teal" />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {['Lab Exercises', 'Assignment Set', 'Quiz 1', 'Mock Test'].map((item) => (
+                        <button key={item} className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5 hover:border-accent-teal/30 transition-all text-left group">
+                            <Terminal size={14} className="text-accent-teal" />
+                            <span className="text-slate-300 text-sm group-hover:text-white">{item}</span>
                         </button>
-                    </div>
-                    
-                    {/* Body */}
-                    <div className="p-6 max-h-[60vh] overflow-y-auto custom-scrollbar bg-white/5">
-                        <div className="space-y-4">
-                            {questions.map((q, idx) => (
-                                <div key={idx} className="p-4 rounded-xl bg-black/30 border border-white/5 hover:border-white/10 transition-colors">
-                                    <p className="text-slate-200 text-sm leading-relaxed whitespace-pre-line">{q}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Footer */}
-                    <div className="p-4 border-t border-white/10 bg-black/40 flex justify-end">
-                        <button 
-                            onClick={onClose}
-                            className="px-6 py-2 rounded-xl bg-accent-teal/20 text-accent-teal font-medium hover:bg-accent-teal hover:text-white transition-all shadow-lg shadow-accent-teal/20"
-                        >
-                            Close Test View
-                        </button>
-                    </div>
-                </div>
-            </motion.div>
-        </AnimatePresence>
-    );
-};
-
-const ProgrammingContent = ({ content, subject }) => {
-    const [activeVideo, setActiveVideo] = useState(null);
-    const [activeTest, setActiveTest] = useState(null);
-
-    return (
-        <>
-            <div className="grid lg:grid-cols-2 gap-8">
-                {/* Videos */}
-                <div className="glass-card p-6">
-                    <SectionHeader icon={Video} title="Video Lectures" color="accent-blue" />
-                    <div className="space-y-3">
-                        {content.videos.map((video) => (
-                            <div 
-                                key={video.id} 
-                                className="group flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-all cursor-pointer"
-                                onClick={() => setActiveVideo(video)}
-                            >
-                                <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-accent-blue/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                        <Play size={16} className="text-accent-blue ml-1" />
-                                    </div>
-                                    <div>
-                                        <p className="text-white text-sm font-medium group-hover:text-accent-blue transition-colors">{video.title}</p>
-                                        <p className="text-slate-500 text-xs">{video.duration}</p>
-                                    </div>
-                                </div>
-                                <div className="text-accent-blue p-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <Play size={16} />
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Practice & Notes */}
-                <div className="space-y-6">
-                    <div className="glass-card p-6">
-                        <SectionHeader icon={Code2} title="Coding Practice" color="accent-teal" />
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            {['Lab Exercises', 'Assignment Set', 'Quiz 1', 'Mock Test'].map((item) => (
-                                <button 
-                                    key={item} 
-                                    onClick={() => setActiveTest(item)}
-                                    className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5 hover:border-accent-teal/30 hover:bg-accent-teal/5 transition-all text-left group"
-                                >
-                                    <Terminal size={14} className="text-accent-teal group-hover:scale-110 transition-transform" />
-                                    <span className="text-slate-300 text-sm group-hover:text-white font-medium">{item}</span>
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="glass-card p-6">
-                        <SectionHeader icon={Terminal} title="Example Programs" color="accent-violet" />
-                        <div className="space-y-2">
-                            {content.examplePrograms.map((prog, i) => (
-                                <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-black/20 text-xs border border-white/5 hover:border-white/10 transition-colors">
-                                    <span className="text-slate-300 font-medium">{prog.title}</span>
-                                    <span className="text-accent-violet-light font-mono px-2 py-1 rounded bg-accent-violet/10 border border-accent-violet/20">{prog.language}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
 
-            {/* Video Player Modal */}
-            {activeVideo && (
-                <VideoModal 
-                    video={activeVideo} 
-                    onClose={() => setActiveVideo(null)} 
-                />
-            )}
-
-            {/* Test Questions Modal */}
-            {activeTest && (
-                <TestModal 
-                    type={activeTest} 
-                    subject={subject}
-                    onClose={() => setActiveTest(null)} 
-                />
-            )}
-        </>
-    );
-};
+            <div className="glass-card p-6">
+                <SectionHeader icon={Terminal} title="Example Programs" color="accent-violet" />
+                <div className="space-y-2">
+                    {content.examplePrograms.map((prog, i) => (
+                        <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-black/20 text-xs">
+                            <span className="text-slate-300">{prog.title}</span>
+                            <span className="text-accent-violet-light font-mono px-2 py-0.5 rounded bg-accent-violet/10 border border-accent-violet/20">{prog.language}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </div>
+)
 
 const TheoryContent = ({ content }) => (
     <div className="space-y-8">
@@ -1408,35 +1049,14 @@ const ContentRenderer = ({ subject }) => {
                 </div>
             </div>
 
-            {subject.type === 'programming' && <ProgrammingContent content={subject.content} subject={subject} />}
+            {subject.type === 'programming' && <ProgrammingContent content={subject.content} />}
             {subject.type === 'theory' && <TheoryContent content={subject.content} />}
             {subject.type === 'theory_math' && <TheoryMathContent content={subject.content} />}
         </motion.div>
     )
 }
 
-const RegulationToggle = ({ selected, onChange }) => (
-    <div className="flex bg-white/5 p-1 rounded-2xl border border-white/10 w-fit mb-8 mx-auto shadow-2xl backdrop-blur-xl">
-        {regulations.map((reg) => (
-            <button
-                key={reg}
-                onClick={() => onChange(reg)}
-                className={`flex items-center gap-3 px-8 py-3 rounded-xl transition-all duration-500 font-heading text-sm font-semibold tracking-wide ${selected === reg
-                    ? 'bg-gradient-to-r from-accent-blue to-accent-violet text-white shadow-[0_0_30px_rgba(59,130,246,0.3)] scale-[1.02]'
-                    : 'text-slate-500 hover:text-slate-300 hover:bg-white/5'
-                    }`}
-            >
-                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${selected === reg ? 'border-white bg-white/20' : 'border-slate-700'}`}>
-                    {selected === reg && <motion.div layoutId="check" className="w-2.5 h-2.5 bg-white rounded-full shadow-[0_0_8px_white]" />}
-                </div>
-                {reg}
-            </button>
-        ))}
-    </div>
-)
-
 export default function ELearning() {
-    const [selectedRegulation, setSelectedRegulation] = useState('Regulation 2020')
     const [selectedYear, setSelectedYear] = useState('')
     const [selectedSemester, setSelectedSemester] = useState('')
     const [selectedSubjectId, setSelectedSubjectId] = useState('')
@@ -1445,23 +1065,15 @@ export default function ELearning() {
     // Get categories for the current year/semester
     const availableCategories = useMemo(() => {
         if (!selectedYear || !selectedSemester) return []
-        const relevant = subjectData.filter(sub =>
-            sub.regulation === selectedRegulation &&
-            sub.year === selectedYear &&
-            sub.semester === selectedSemester
-        )
+        const relevant = subjectData.filter(sub => sub.year === selectedYear && sub.semester === selectedSemester)
         const cats = new Set(relevant.map(sub => sub.category).filter(Boolean))
         return Array.from(cats)
-    }, [selectedYear, selectedSemester, selectedRegulation])
+    }, [selectedYear, selectedSemester])
 
     // Filter subjects: hide electives, show common subjects + category placeholders
     const filteredSubjects = useMemo(() => {
         if (!selectedYear || !selectedSemester) return []
-        const relevant = subjectData.filter(sub =>
-            sub.regulation === selectedRegulation &&
-            sub.year === selectedYear &&
-            sub.semester === selectedSemester
-        )
+        const relevant = subjectData.filter(sub => sub.year === selectedYear && sub.semester === selectedSemester)
 
         // Commmon subjects (those without a category)
         const common = relevant.filter(sub => !sub.category)
@@ -1473,19 +1085,18 @@ export default function ELearning() {
         }))
 
         return [...common, ...catOptions]
-    }, [selectedYear, selectedSemester, availableCategories, selectedRegulation])
+    }, [selectedYear, selectedSemester, availableCategories])
 
     // Specific electives based on selected category placeholder
     const electiveOptions = useMemo(() => {
         if (!selectedSubjectId.startsWith('cat:')) return []
         const categoryName = selectedSubjectId.replace('cat:', '')
         return subjectData.filter(sub =>
-            sub.regulation === selectedRegulation &&
             sub.year === selectedYear &&
             sub.semester === selectedSemester &&
             sub.category === categoryName
         )
-    }, [selectedYear, selectedSemester, selectedSubjectId, selectedRegulation])
+    }, [selectedYear, selectedSemester, selectedSubjectId])
 
     const activeSubject = useMemo(() => {
         if (selectedSubjectId.startsWith('cat:')) {
@@ -1496,29 +1107,9 @@ export default function ELearning() {
 
     return (
         <div className="pt-20 min-h-screen">
-            {/* Header Regulation & Control Panel */}
+            {/* Header Control Panel */}
             <section className="section-pad bg-primary-light/30 border-b border-white/5">
                 <div className="max-w-7xl mx-auto px-6">
-                    {/* Regulation Selection Checklist Style */}
-                    <div className="text-center mb-10">
-                        <h2 className="text-slate-400 text-xs font-bold uppercase tracking-[0.2em] mb-4">Select Academic Regulation</h2>
-                        <RegulationToggle
-                            selected={selectedRegulation}
-                            onChange={(val) => {
-                                setSelectedRegulation(val)
-                                setSelectedYear('')
-                                setSelectedSemester('')
-                                setSelectedSubjectId('')
-                                setSelectedElectiveId('')
-                            }}
-                        />
-                        <p className="text-slate-500 text-sm italic">
-                            {selectedRegulation === 'Regulation 2024'
-                                ? "Subjects for 2024 Regulation are being updated..."
-                                : "Access curated content for the current standard syllabus."}
-                        </p>
-                    </div>
-
                     <div className="flex flex-wrap gap-6 items-end">
                         <Selector
                             label="Academic Year"

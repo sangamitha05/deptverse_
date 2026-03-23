@@ -13,18 +13,13 @@ import Research from './pages/Research'
 import Placements from './pages/Placements'
 import Events from './pages/Events'
 import StudentCorner from './pages/StudentCorner'
-import ELearning from './pages/eLearning'
+import eLearning from './pages/eLearning'
 import Login from './pages/Login'
 
 // Portal Pages
 import StudentDashboard from './pages/portal/StudentDashboard'
 import FacultyDashboard from './pages/portal/FacultyDashboard'
 import AdminPanel from './pages/portal/AdminPanel'
-
-// Student Sub-Pages
-import LeaveRequest from './pages/student/LeaveRequest'
-import ODRequest from './pages/student/ODRequest'
-import MyRequests from './pages/student/MyRequests'
 
 function App() {
   return (
@@ -41,7 +36,7 @@ function App() {
           <Route path="/placements" element={<Placements />} />
           <Route path="/events" element={<Events />} />
           <Route path="/student-corner" element={<StudentCorner />} />
-          <Route path="/elearning" element={<ELearning />} />
+          <Route path="/elearning" element={<eLearning />} />
         </Route>
 
         {/* Auth */}
@@ -51,9 +46,6 @@ function App() {
         <Route path="/portal" element={<PortalLayout />}>
           <Route index element={<Navigate to="/portal/student" replace />} />
           <Route path="student" element={<StudentDashboard />} />
-          <Route path="student/leave-request" element={<LeaveRequest />} />
-          <Route path="student/od-request" element={<ODRequest />} />
-          <Route path="student/my-requests" element={<MyRequests />} />
           <Route path="faculty" element={<FacultyDashboard />} />
           <Route path="admin" element={<AdminPanel />} />
         </Route>
